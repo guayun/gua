@@ -1,0 +1,124 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Microsoft yahei", Arial;
+}
+body {
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	background: url(https://jihulab.com/guas/gua/raw/main/images/background.jpg) center;
+}
+.top {
+	margin-top: 5vh;
+}
+.footer {
+	margin-top: 5vh;
+	margin-bottom: 5vh;
+}
+
+.nickname {
+	font-size: 40px;
+	font-weight: bold;
+}
+
+ul li {
+	position: relative;
+	list-style: none;
+	text-align: center;
+	margin: 15px;
+	position: relative;
+	cursor: pointer;
+}
+@media screen and (max-width:600px){
+ul {
+	width: 240px;
+}
+.user-warp {
+	width: 100px;
+}
+ul li .icon-box {
+	width: 170px;
+}
+}
+@media screen and (min-width:600px) and (max-width:960px){
+ul {
+	width: 500px;
+}
+.user-warp {
+	width: 130px;
+}
+ul li .icon-box {
+	width: 430px;
+}
+}
+@media screen and (min-width:960px){
+ul {
+	width: 500px;
+}
+.user-warp {
+	width: 130px;
+}
+ul li .icon-box {
+	width: 430px;
+}
+}
+
+ul {
+	margin-top: 3vh;
+	position: relative;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	border-radius: 10px;
+	padding: 20px;
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.3);
+	border-radius: 1rem;
+}
+ul li .icon-box {
+	height: 55px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.3);
+	border-radius: 1rem;
+	color: #fff;
+	font-weight: bold;
+	font-size: 20px;
+}
+div,
+p,
+a{
+	color: #fff;
+    text-decoration: none;
+}
+
+.hitokoto {
+	font-size: 18px;
+}
+
+.user-warp {
+	border-radius: 100%;
+	box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.3);
+}
+
+.page-num{
+	font-size: 10px;
+	text-align: center;
+	margin-top: 30px;
+}
+
+.page {
+	text-align: center;
+	margin-top: 30px;
+}
+
+.page a {
+	text-decoration: none;
+	padding: 7px 13px;
+	border-radius: 100%;
+	box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.3);
+}
