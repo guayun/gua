@@ -1,80 +1,213 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width,initial-scale=1.0">
-		<meta name="format-detection" content="telephone=no">
-		<title>呱呱主页 - Powered by Gua</title>
-		<link href="./css/style.css" rel="stylesheet">
-		<link href="https://jihulab.com/guas/gua/raw/main/icons/index.png" rel="shortcut icon">
-		<script src="https://lib.baomitu.com/jquery/3.3.0/jquery.min.js"></script>
-		<script>
-			setTimeout(function() {
-				$("#hitokoto").fadeOut(1000);
-			}, 5000);
 
-			function goo() {
-				fetch('https://v1.hitokoto.cn')
-					.then(function(res) {
-						return res.json();
-					})
-					.then(function(data) {
-						var hitokoto = document.getElementById('hitokoto');
-						hitokoto.innerHTML = data.hitokoto;
-						$("#hitokoto").fadeIn(1000);
-					})
-					.catch(function(err) {
-						console.error(err);
-					})
-				setTimeout(function() {
-					$("#hitokoto").fadeOut(1000);
-				}, 5000);
-			}
-			setInterval("goo()", 5800);
-		</script>
-	</head>
-	<body>
-		<div align="center" class="top">
-			<img class="user-warp" src="https://jihulab.com/guas/gua/raw/main/head.png">
-			<p class="nickname">呱呱</p>
-			<p id="hitokoto" class="hitokoto">Today is a nice day :)</p>
-			<ul>
-				<li><a class="icon-box" href="https://api.guagua.one" target="_blank">API</a></li>
-				<li><a class="icon-box" href="https://blog.guagua.one" target="_blank">博客</a></li>
-				<li><a class="icon-box" href="https://dg.guagua.one" target="_blank">代挂</a></li>
-				<li><a class="icon-box" href="https://game.guagua.one" target="_blank">游戏</a></li>
-				<li><a class="icon-box" href="https://hz.guagua.one" target="_blank">互赞</a></li>
-				<li><a class="icon-box" href="https://mi.guagua.one" target="_blank">米店</a></li>
-				<li><a class="icon-box" href="https://community.guagua.one" target="_blank">社区</a></li>
-				<li><a class="icon-box" href="https://tool.guagua.one" target="_blank">工具</a></li>
-				<li><a class="icon-box" href="https://yin.guagua.one" target="_blank">音乐</a></li>
-				<div class="page">
-					<a href="page1.html">1</a>
-                    <a href="page2.html">2</a>
-				<p class="page-num">第1页/共2页</p>
-				</div>
-			</ul>
-			<p class="footer">&copy;呱呱不识字<br><a href="https://icp.gov.moe/?keyword=20220333" target="_blank">萌ICP备20220333号</a><br>本站已安全运行<a id="momk"></a></p>
-		</div>
-		<script language="javascript">
-			function show_date_time() {
-				window.setTimeout("show_date_time()", 1000);
-				BirthDay = new Date("2020/05/09 09:30:24");
-				today = new Date();
-				timeold = (today.getTime() - BirthDay.getTime());
-				sectimeold = timeold / 1000
-				secondsold = Math.floor(sectimeold);
-				msPerDay = 24 * 60 * 60 * 1000
-				e_daysold = timeold / msPerDay
-				daysold = Math.floor(e_daysold);
-				e_hrsold = (daysold - e_daysold) * -24;
-				hrsold = Math.floor(e_hrsold);
-				e_minsold = (hrsold - e_hrsold) * -60;
-				minsold = Math.floor((hrsold - e_hrsold) * -60);
-				seconds = Math.floor((minsold - e_minsold) * -60);
-				momk.innerHTML = daysold + "天" + hrsold + "时" + minsold + "分" + seconds + "秒";
-			}
-			show_date_time();
-		</script>
-	</body>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <title>呱呱主页 - Powered by Gua</title>
+    <link href="https://jihulab.com/guas/gua/raw/main/icons/index.png" rel="shortcut icon">
+    <script src="https://lib.baomitu.com/jquery/3.3.0/jquery.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: microsoft yahei, Arial
+        }
+
+        body {
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: url(https://jihulab.com/guas/gua/raw/main/images/background.svg) center;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px)
+        }
+
+        .top {
+            padding-top: 5vh
+        }
+
+        .footer {
+            padding-top: 5vh;
+            padding-bottom: 5vh
+        }
+
+        .nickname {
+            font-size: 40px;
+            font-weight: 700
+        }
+
+        ul li {
+            position: relative;
+            list-style: none;
+            text-align: center;
+            margin: 15px;
+            position: relative;
+            cursor: pointer
+        }
+
+        @media screen and (max-width:600px) {
+            ul {
+                width: 240px
+            }
+
+            .user-warp {
+                width: 100px
+            }
+
+            ul li .icon-box {
+                width: 170px
+            }
+        }
+
+        @media screen and (min-width:600px) and (max-width:960px) {
+            ul {
+                width: 500px
+            }
+
+            .user-warp {
+                width: 130px
+            }
+
+            ul li .icon-box {
+                width: 430px
+            }
+        }
+
+        @media screen and (min-width:960px) {
+            ul {
+                width: 500px
+            }
+
+            .user-warp {
+                width: 130px
+            }
+
+            ul li .icon-box {
+                width: 430px
+            }
+        }
+
+        ul {
+            margin-top: 3vh;
+            position: relative;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 1rem 2rem rgba(0, 0, 0, .3);
+            border-radius: 1rem
+        }
+
+        ul li .icon-box {
+            height: 55px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 1rem 2rem rgba(0, 0, 0, .3);
+            border-radius: 1rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 20px
+        }
+
+        div,
+        p,
+        a {
+            color: #fff;
+            text-decoration: none
+        }
+
+        .hitokoto {
+            font-size: 18px
+        }
+
+        .user-warp {
+            border-radius: 100%;
+            box-shadow: 0 1rem 2rem rgba(0, 0, 0, .3)
+        }
+
+        .page-num {
+            font-size: 10px;
+            text-align: center;
+            margin-top: 30px
+        }
+
+        .page {
+            text-align: center;
+            margin-top: 30px
+        }
+
+        .page a {
+            text-decoration: none;
+            padding: 7px 13px;
+            border-radius: 100%;
+            box-shadow: 0 1rem 2rem rgba(0, 0, 0, .3)
+        }
+    </style>
+    <script>
+        setTimeout(function () {
+            $("#hitokoto").fadeOut(1000);
+        }, 5000);
+
+        function goo() {
+            fetch('https://v1.hitokoto.cn')
+                .then(function (res) {
+                    return res.json();
+                })
+                .then(function (data) {
+                    var hitokoto = document.getElementById('hitokoto');
+                    hitokoto.innerHTML = data.hitokoto;
+                    $("#hitokoto").fadeIn(1000);
+                })
+                .catch(function (err) {
+                    console.error(err);
+                })
+            setTimeout(function () {
+                $("#hitokoto").fadeOut(1000);
+            }, 5000);
+        }
+        setInterval("goo()", 5800);
+    </script>
+</head>
+
+<body>
+    <div align="center" class="top">
+        <img class="user-warp" src="https://jihulab.com/guas/gua/raw/main/head.png">
+        <p class="nickname">呱呱</p>
+        <p id="hitokoto" class="hitokoto">Today is a nice day :)</p>
+        <ul>
+            <li><a class="icon-box" href="https://gua.im" target="_blank">呱呱主页</a></li>
+            <div class="page">
+                <a href="">1</a>
+                <p class="page-num">第1页/共1页</p>
+            </div>
+        </ul>
+        <p class="footer">&copy;呱呱不识字<br><a href="https://icp.gov.moe/?keyword=20220333"
+                target="_blank">萌ICP备20220333号</a><br>本站已安全运行<a id="momk"></a></p>
+    </div>
+    <script language="javascript">
+        function show_date_time() {
+            window.setTimeout("show_date_time()", 1000);
+            BirthDay = new Date("2020/05/09 09:30:24");
+            today = new Date();
+            timeold = (today.getTime() - BirthDay.getTime());
+            sectimeold = timeold / 1000
+            secondsold = Math.floor(sectimeold);
+            msPerDay = 24 * 60 * 60 * 1000
+            e_daysold = timeold / msPerDay
+            daysold = Math.floor(e_daysold);
+            e_hrsold = (daysold - e_daysold) * -24;
+            hrsold = Math.floor(e_hrsold);
+            e_minsold = (hrsold - e_hrsold) * -60;
+            minsold = Math.floor((hrsold - e_hrsold) * -60);
+            seconds = Math.floor((minsold - e_minsold) * -60);
+            momk.innerHTML = daysold + "天" + hrsold + "时" + minsold + "分" + seconds + "秒";
+        }
+        show_date_time();
+    </script>
+</body>
 </html>
